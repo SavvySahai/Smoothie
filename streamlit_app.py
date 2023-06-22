@@ -1,9 +1,9 @@
-import streamlit
+import streamlit as st
 
-streamlit.title("Trying the module")
+st.title("Trying the module")
 
-streamlit.header('First Line')
+st.header('First Line')
 
-streamlit.text('Hopefully this has displayed without an error')
-streamlit.text('Using streamlit is really easy')
-streamlit.text('And if I am stuck I can always refer the docs!')
+st.text('Hopefully this has displayed without an error')
+st.text('Using streamlit is really easy')
+st.text('And if I am stuck I can always refer the docs!')
