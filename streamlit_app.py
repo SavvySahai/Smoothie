@@ -33,7 +33,7 @@ import requests
 # Make this look better
 #fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # puts it in a dataframe as in a table
-st.dataframe(fruityvice_normalized)
+#st.dataframe(fruityvice_normalized)
 
 
 # adding a text-box
