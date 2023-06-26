@@ -34,10 +34,9 @@ st.write('The user entered: ', fruit_choice)
 
 
 # Make this look better
-#fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-# puts it in a dataframe as in a table
-#st.dataframe(fruityvice_normalized)
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+puts it in a dataframe as in a table
+st.dataframe(fruityvice_normalized)
 
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-st.dataframe(fruityvice_response)
