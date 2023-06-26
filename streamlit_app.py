@@ -29,7 +29,6 @@ st.dataframe(fruits_to_show)
 #To display the api response
 st.header("Fruityvice Fruit Advice!")
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 # Make this look better
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
@@ -40,3 +39,4 @@ st.dataframe(fruityvice_normalized)
 # adding a text-box
 fruit_choice = st.text_input('What fruit information would you like', 'Kiwi')
 st.write('The user entered: ', fruit_choice)
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
