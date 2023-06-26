@@ -29,7 +29,7 @@ st.dataframe(fruits_to_show)
 #To display the api response
 st.header("Fruityvice Fruit Advice!")
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + kiwi)
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
 
 # Make this look better
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
