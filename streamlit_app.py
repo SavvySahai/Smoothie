@@ -52,3 +52,5 @@ st.dataframe(my_data_rows)
 # adding a text-box
 add_fruit = st.text_input('What fruit would you like to add', 'Rambhutan')
 st.write('Thanks for adding ', add_fruit)
+
+my_cur.execute("insert into fruit_load_list values ('test')");
