@@ -48,3 +48,7 @@ my_data_row = my_cur.fetchone()
 my_data_row = my_cur.fetchall()
 st.header("The fruit load list contains")
 st.dataframe(my_data_row)
+
+# adding a text-box
+add_fruit = st.text_input('What fruit would you like to add', 'Rambhutan')
+st.write('Thanks for adding ', add_fruit)
