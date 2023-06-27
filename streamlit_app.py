@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+import requests
+import snowflake.connector
+from urllib.error import URLError
 
 #st.title("Trying the module")
 #st.header('First Line')
@@ -33,14 +36,14 @@ fruit_choice = st.text_input('What fruit information would you like', 'Kiwi')
 st.write('The user entered: ', fruit_choice)
 
 
-import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 # Make this look better
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 #puts it in a dataframe as in a table
 st.dataframe(fruityvice_normalized)
+st.stop()
 
-import snowflake.connector
+
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * FROM fruit_load_list")
