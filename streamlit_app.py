@@ -48,3 +48,5 @@ my_data_row = my_cur.fetchone()
 st.text("Hello from Snowflake:")
 st.text(my_data_row)
 
+
+
