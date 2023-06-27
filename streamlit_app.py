@@ -50,13 +50,19 @@ except URLError as e:
     st.error()
 
 
-my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * FROM fruit_load_list")
-my_data_row = my_cur.fetchone()
-my_data_rows = my_cur.fetchall()
-st.header("The fruit load list contains")
-st.dataframe(my_data_rows)
+st.header("The fruit load list contains:")
+# Snowflak-related functions
+def get_fruit_load_list():
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("SELECT * FROM fruit_load_list")
+        return my_cur.fetchall()
+        
+# Add a button to load the fruit        
+if st.button('Get Fruit Load List'):
+    my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+    my_data_rows = get_fruit_load_list()
+    st.dataframe(my_data_rows)
+    
 
 # adding a text-box
 add_fruit = st.text_input('What fruit would you like to add', 'Rambhutan')
