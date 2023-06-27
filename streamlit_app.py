@@ -31,17 +31,18 @@ st.dataframe(fruits_to_show)
 
 #To display the api response
 st.header("Fruityvice Fruit Advice!")
-# adding a text-box
-fruit_choice = st.text_input('What fruit information would you like', 'Kiwi')
-st.write('The user entered: ', fruit_choice)
+try:
+  # adding a text-box
+  fruit_choice = st.text_input('What fruit information would you like?')
+  if not fruit_choice:
+      st.error("Please select a fruit to get information!")
+  else:
+      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+      fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+      st.dataframe(fruityvice_normalized)
 
-
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-# Make this look better
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-#puts it in a dataframe as in a table
-st.dataframe(fruityvice_normalized)
-st.stop()
+except URLError as e:
+    st.error()
 
 
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
